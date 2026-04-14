@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hotel Booking System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1>Hotel Booking System</h1>
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/create">Create Booking</a>
+        <a href="/bookings">View Bookings</a>
+    </nav>
+
+    {% block content %}{% endblock %}
+</div>
+</body>
+</html>

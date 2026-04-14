@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+<h2>Create Booking</h2>
+
+<form action="/book" method="POST" class="form-grid">
+
+    <input type="text" name="guest_name" placeholder="Guest Name" required>
+    <input type="email" name="email" placeholder="Email" required>
+
+    <select name="room_type">
+        <option>Single</option>
+        <option>Double</option>
+        <option>Suite</option>
+    </select>
+
+    <input type="date" name="check_in" required>
+    <input type="date" name="check_out" required>
+
+    <button class="btn-primary">Book Room</button>
+</form>
+</div>
+{% endblock %}

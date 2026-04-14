@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hotel Booking System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Hotel Booking System</h1>
+
+    <div class="card">
+        <h2>New Booking</h2>
+        <form action="/book" method="POST" class="form-grid">
+
+            <input type="text" name="guest_name" placeholder="Guest Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+
+            <select name="room_type">
+                <option>Single</option>
+                <option>Double</option>
+                <option>Suite</option>
+            </select>
+
+            <input type="date" name="check_in" required>
+            <input type="date" name="check_out" required>
+
+            <button type="submit" class="btn-primary">Book Room</button>
+        </form>
+    </div>
+
+    <div class="card">
+        <h2>All Bookings</h2>
+
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Room</th>
+                <th>Check-in</th>
+                <th>Check-out</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+
+            {% for booking in bookings %}
+            <tr>
+                <td>{{ booking[1] }}</td>
+                <td>{{ booking[2] }}</td>
+                <td>{{ booking[3] }}</td>
+                <td>{{ booking[4] }}</td>
+                <td>{{ booking[5] }}</td>
+
+                <td>
+                    <form action="/update/{{ booking[0] }}" method="POST">
+                        <select name="room_type">
+                            <option>Single</option>
+                            <option>Double</option>
+                            <option>Suite</option>
+                        </select>
+                        <button class="btn-update">Update</button>
+                    </form>
+                </td>
+
+                <td>
+                    <a href="/delete/{{ booking[0] }}" class="btn-delete">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+</html>
