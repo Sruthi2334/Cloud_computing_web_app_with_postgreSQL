@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+<h2>All Bookings</h2>
+
+<table>
+<tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Room</th>
+    <th>Check-in</th>
+    <th>Check-out</th>
+    <th>Edit</th>
+    <th>Delete</th>
+</tr>
+
+{% for booking in bookings %}
+<tr>
+    <td>{{ booking[1] }}</td>
+    <td>{{ booking[2] }}</td>
+    <td>{{ booking[3] }}</td>
+    <td>{{ booking[4] }}</td>
+    <td>{{ booking[5] }}</td>
+
+    <td><a href="/edit/{{ booking[0] }}" class="btn-update">Edit</a></td>
+    <td><a href="/delete/{{ booking[0] }}" class="btn-delete">Delete</a></td>
+</tr>
+{% endfor %}
+</table>
+</div>
+{% endblock %}
